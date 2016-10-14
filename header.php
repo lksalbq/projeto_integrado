@@ -34,7 +34,7 @@
 	<!-- Actions  -->
 
 	<script src="js/actionClick.js"></script>
-	<script src="js/register_form.js"></script>
+        <script src="js/ajax-call.js"></script>
 
 <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 <link rel="shortcut icon" href="favicon.ico">

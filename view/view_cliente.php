@@ -1,134 +1,133 @@
 <div id="hoverCliente" class="container">
 
-	<div class="row text-center" id="fh5co-features">
-	
-	<div class=" heading animate-box"><h2>Cadastro de Clientes</h2></div>
-	
-	<div id="load" class="form-group"></div>
-	
-	<div id="msgsucesso"  style="display: none;" class="alert alert-success alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        Cliente cadastrado com sucesso!
-	</div>
-	
+    <div class="row text-center" id="fh5co-features">
+
+        <div class=" heading animate-box"><h2>Cadastro de Clientes</h2></div>
+
+        <div id="load" class="form-group"></div>
+
+        <div id="msgsucesso"  style="display: none;" class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            Cliente cadastrado com sucesso!
+        </div>
+
         <form  id="cadastroCliente" class="form-horizontal"  action="" method="POST" autocomplete="off" enctype="multipart/form-data">
-	<fieldset>
+            <fieldset>
 
-		<!-- Form Name -->
-		<legend></legend>
+                <!-- Form Name -->
+                <legend></legend>
 
-		<!-- Text input-->
-		<div class="form-group">
-			<label class="col-md-4 control-label" for="">Nome</label>  
-			<div class="col-md-6">
-				<input id="nome" name="nome" placeholder="Nome" class="form-control input-md" required="" type="text">
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="">Nome</label>  
+                    <div class="col-md-6">
+                        <input id="nome" name="nome" placeholder="Nome" class="form-control input-md" required="" type="text">
 
-			</div>
-		</div>
+                    </div>
+                </div>
 
-		<!-- Text input-->
-		<div class="form-group">
-			<label class="col-md-4 control-label" for="endereco">Endereço</label>  
-			<div class="col-md-8">
-				<input id="endereco" name="endereco" placeholder="Endereço" class="form-control input-md" required="" type="text">
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="endereco">Endereço</label>  
+                    <div class="col-md-8">
+                        <input id="endereco" name="endereco" placeholder="Endereço" class="form-control input-md" required="" type="text">
 
-			</div>
-		</div>
+                    </div>
+                </div>
 
-		<!-- Text input-->
-		<div class="form-group">
-			<label class="col-md-4 control-label" for="email">E-mail</label>  
-			<div class="col-md-5">
-				<input id="email" name="email" placeholder="E-mail" class="form-control input-md" required="" type="text">
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="email">E-mail</label>  
+                    <div class="col-md-5">
+                        <input id="email" name="email" placeholder="E-mail" class="form-control input-md" required="" type="text">
 
-			</div>
-		</div>
+                    </div>
+                </div>
 
-		<!-- Select Basic -->
-		<div class="form-group">
-			<label class="col-md-4 control-label" for="perfil">Perfil</label>
-			<div class="col-md-4">
-				<select id="perfil" name="perfil" class="form-control">
-					<option value="1">Cliente</option>
-					<option value="2">Vendedor</option>
-					<option value="3">Administrador</option>
-				</select>
-			</div>
-		</div>
+                <!-- Select Basic -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="perfil">Perfil</label>
+                    <div class="col-md-4">
+                        <select id="perfil" name="perfil" class="form-control">
+                            <option value="1">Cliente</option>
+                            <option value="2">Vendedor</option>
+                            <option value="3">Administrador</option>
+                        </select>
+                    </div>
+                </div>
 
-		<!-- Button (Double) --> <div class="form-group"> <label class="col-md-4 control-label" for="salvar"></label> <div class="col-md-4"> <button id="salvar" name="salvar" class="btn btn-success">Salvar</button> <button id="cancelar" name="cancelar" class="btn btn-danger">Cancelar</button> </div> </div>
-	</fieldset>
-	</form>
-</div>
-<div id="msgsucessodelete"  style="display: none;" class="alert alert-success alert-dismissable">
+                <!-- Button (Double) --> <div class="form-group"> <label class="col-md-4 control-label" for="salvar"></label> <div class="col-md-4"> <button id="salvar" name="salvar" class="btn btn-success">Salvar</button> <button id="cancelar" name="cancelar" class="btn btn-danger">Cancelar</button> </div> </div>
+            </fieldset>
+        </form>
+    </div>
+    <div id="msgsucessodelete"  style="display: none;" class="alert alert-success alert-dismissable">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         Cliente excluído com sucesso!
-</div>
-<?php
+    </div>
+    
+ <?php
+    include_once 'config/database.php';
+    include_once 'model/cliente.php';
 
-include_once 'config/database.php';
-include_once 'model/cliente.php';
 
+    $database = new Database();
+    $db = $database->getConnection();
 
-$database = new Database();
-$db = $database->getConnection();
- 
-$cliente = new Cliente($db);
+    $cliente = new Cliente($db);
 
-$stmt = $cliente->readAll();
+    $stmt = $cliente->readAll();
 
-$num = $stmt->rowCount();
+    $num = $stmt->rowCount();
 
 //lista os funcionarios cadastrados
-if($num>0){
- 
-    echo "<table id='lista_clientes' class='table table-bordered table-hover lista_clientes'>";
-     
-    
+    if ($num > 0) {
+
+        echo "<table id='lista_clientes' class='table table-bordered table-hover lista_clientes'>";
+
+
         echo "<tr>";
-            echo "<th class='width-30-pct'>Nome</th>";
-            echo "<th class='width-100-pct'>Email</th>";
-            echo "<th>Perfil</th>";
-            echo "<th style='text-align:center;'>Ação</th>";
+        echo "<th class='width-30-pct'>Nome</th>";
+        echo "<th class='width-100-pct'>Email</th>";
+        echo "<th>Perfil</th>";
+        echo "<th style='text-align:center;'>Ação</th>";
         echo "</tr>";
-         
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-               
-          
-            
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
+
+
             extract($row);
-         
+
             echo "<tr>";
-                echo "<td>{$nome}</td>";
-                echo "<td>{$email}</td>";
-                if($perfil == "1"){
-                     echo "<td>Administrador</td>";
-                }else if($perfil == 2){
-                    echo "<td>Vendedor</td>";
-                }else if ($perfil == 3){
-                    echo "<td>Cliente</td>";
-                }
-    
-                echo "<td style='text-align:center;'>";
-                    echo "<div id='idCliente' class='idCliente display-none' style='display: none;'>{$id}</div>"; 
-                    
-                    echo "<div class='btn btn-info edit-btn margin-right-1em'>";
-                        echo "<span class='glyphicon glyphicon-edit'></span> Editar";
-                    echo "</div>";
-                     
-                
-                    echo "<div class='btn btn-danger delete-btn'>";
-                        echo "<span class='glyphicon glyphicon-remove'></span> Deletar";
-                    echo "</div>";
-                echo "</td>";
+            echo "<td>{$nome}</td>";
+            echo "<td>{$email}</td>";
+            if ($perfil == "1") {
+                echo "<td>Administrador</td>";
+            } else if ($perfil == 2) {
+                echo "<td>Vendedor</td>";
+            } else if ($perfil == 3) {
+                echo "<td>Cliente</td>";
+            }
+
+            echo "<td style='text-align:center;'>";
+            echo "<div id='idCliente' class='idCliente display-none' style='display: none;'>{$id}</div>";
+
+            echo "<div class='btn btn-info edit-btn margin-right-1em'>";
+            echo "<span class='glyphicon glyphicon-edit'></span> Editar";
+            echo "</div>";
+
+
+            echo "<div class='btn btn-danger delete-btn'>";
+            echo "<span class='glyphicon glyphicon-remove'></span> Deletar";
+            echo "</div>";
+            echo "</td>";
             echo "</tr>";
         }
-         
-    echo "</table>";
-     
-}
-else{
-    echo "<div class='lista_clientes alert alert-info'>Nenhum Funcionário Cadastrado!</div>";
-}
- 
+
+        echo "</table>";
+    } else {
+        echo "<div class='lista_clientes alert alert-info'>Nenhum Funcionário Cadastrado!</div>";
+    }
+
+    echo "<div id='page-edita'></div>";
 ?>

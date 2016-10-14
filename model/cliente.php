@@ -49,17 +49,20 @@ class Cliente {
     //lê um cliente para a tabela lista_clientes
     function readOne() {
         $query = "SELECT
-                 nome
+                 nome,endereco,email
                 FROM clientes
             WHERE
                 id = ?
             LIMIT
                 0,1";
+        
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(1, $this->id);
         $stmt->execute();
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         $this->nome = $row['nome'];
+        $this->endereco = $row['endereco'];
+        $this->email = $row['email'];
     }
     
     //faz um update em cliente caso ele seja editado
@@ -67,13 +70,20 @@ class Cliente {
         $query = "UPDATE 
                 clientes
             SET 
-                nome = :nome
+                nome = :nome,
+                endereco = :endereco,
+                email = :email
+                
             WHERE
-                matricula = :matricula";
+                id = :id";
         
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':nome', $this->nome);
+        
         $stmt->bindParam(':id', $this->id);
+        $stmt->bindParam(':nome', $this->nome);
+        $stmt->bindParam(':endereco', $this->endereco);
+        $stmt->bindParam(':email', $this->email);
+        
         
         if ($stmt->execute()) {
             return true;
