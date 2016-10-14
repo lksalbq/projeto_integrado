@@ -81,7 +81,7 @@
 
 //lista os funcionarios cadastrados
     if ($num > 0) {
-
+        echo "<div class=' heading animate-box'><h2>Lista de Clientes</h2></div>";
         echo "<table id='lista_clientes' class='table table-bordered table-hover lista_clientes'>";
 
 
