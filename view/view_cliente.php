@@ -1,4 +1,4 @@
-<div  class="container">
+<div id="hoverCliente" class="container">
 
 	<div class="row text-center" id="fh5co-features">
 	
@@ -82,7 +82,7 @@ $num = $stmt->rowCount();
 //lista os funcionarios cadastrados
 if($num>0){
  
-    echo "<table id='lista_clientes' class='table table-bordered table-hover'>";
+    echo "<table id='lista_clientes' class='table table-bordered table-hover lista_clientes'>";
      
     
         echo "<tr>";
@@ -110,7 +110,7 @@ if($num>0){
                 }
     
                 echo "<td style='text-align:center;'>";
-                    echo "<div id='idCliente' class='cliente display-none' style='display: none;'>{$id}</div>"; 
+                    echo "<div id='idCliente' class='idCliente display-none' style='display: none;'>{$id}</div>"; 
                     
                     echo "<div class='btn btn-info edit-btn margin-right-1em'>";
                         echo "<span class='glyphicon glyphicon-edit'></span> Editar";
@@ -128,7 +128,7 @@ if($num>0){
      
 }
 else{
-    echo "<div class='alert alert-info'>Nenhum Funcionário Cadastrado!</div>";
+    echo "<div class='lista_clientes alert alert-info'>Nenhum Funcionário Cadastrado!</div>";
 }
  
 ?>

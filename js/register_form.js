@@ -33,19 +33,25 @@ jQuery(document).ready(function () {
 jQuery(document).ready(function () {
     $(document).on('click', '.delete-btn', function () {
         if (confirm('Tem certeza que deseja deletar?')) {
-            var id = $(this).closest('td').find('.id').text();
-            $.post("controller/deleteCliente.php", {id: id})
-                    .done(function (data) {
-
-                        $("#msgsucessodelete").fadeIn(150, function () {
-                            window.setTimeout(function () {
-                                $('#msgsucessodelete').fadeOut();
-                            }, 3999);
-                        });
-                        setTimeout(function () {
-                            location.reload();
-                        }, 4000);
+            var id = $(this).closest('td').find('.idCliente').text();
+            alert(id);
+            $.ajax({
+                type: 'POST',
+                url: 'controller/deleteCliente.php',
+                data: 'id=' + id,
+                success: function (data) {
+                    
+                    alert(data);
+                    $("#msgsucessodelete").fadeIn(150, function () {
+                        window.setTimeout(function () {
+                            $('#msgsucessodelete').fadeOut();
+                        }, 3999);
                     });
+                    setTimeout(function () {
+                        location.reload();
+                    }, 4000);
+                }
+            });
         }
     });
 });

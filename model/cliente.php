@@ -52,11 +52,11 @@ class Cliente {
                  nome
                 FROM clientes
             WHERE
-                matricula = ?
+                id = ?
             LIMIT
                 0,1";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(1, $this->matricula);
+        $stmt->bindParam(1, $this->id);
         $stmt->execute();
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         $this->nome = $row['nome'];
@@ -65,14 +65,16 @@ class Cliente {
     //faz um update em cliente caso ele seja editado
     function update() {
         $query = "UPDATE 
-                cliente
+                clientes
             SET 
                 nome = :nome
             WHERE
                 matricula = :matricula";
+        
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':nome', $this->nome);
-        $stmt->bindParam(':matricula', $this->matricula);
+        $stmt->bindParam(':id', $this->id);
+        
         if ($stmt->execute()) {
             return true;
         } else {
@@ -83,9 +85,12 @@ class Cliente {
     
     //deleta o cliente de acordo com a matrícula
     function deletar() {
-        $query = " DELETE FROM clientes WHERE clientes.id = ?";
+        $query = " DELETE FROM clientes WHERE id = ?";
+        
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(1, $this->matricula);
+        
+        $stmt->bindParam(1, $this->id);
+        
         if ($stmt->execute()) {
             return true;
         } else {
