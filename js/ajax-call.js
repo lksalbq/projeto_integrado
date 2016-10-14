@@ -86,7 +86,7 @@ jQuery(document).ready(function () {
                 });
                 setTimeout(function () {
                     location.reload();
-                }, 4000);
+                }, 3000);
             }
         });
         return false;

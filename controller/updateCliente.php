@@ -1,7 +1,7 @@
 <?php
 //update do usuario requisitado via ajax
-include_once '../config/database.php';
-include_once '../model/cliente.php';
+include_once __DIR__.'/config/database.php';
+include_once __DIR__.'/model/cliente.php';
 
  
 $database = new Database();
