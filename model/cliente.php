@@ -3,7 +3,8 @@
 class Cliente {
     private $conn;
     private $table_name = "clientes";
-
+    
+    public $id;
     public $nome;
     public $endereco;
     public $email;
@@ -36,9 +37,9 @@ class Cliente {
     
     //lê todos os clientes
     function readAll() {
-        $query = "SELECT nome, email,perfil "
+        $query = "SELECT id,nome, email,perfil "
                 . "FROM clientes "
-                . "ORDER BY nome";
+                . "ORDER BY id";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt;
@@ -82,12 +83,7 @@ class Cliente {
     
     //deleta o cliente de acordo com a matrícula
     function deletar() {
-        $query = " DELETE FROM cliente, endereco, cargo
-                    USING cliente
-                    INNER JOIN endereco INNER JOIN cargo
-                    WHERE cliente.fkendereco = endereco.idendereco
-                    AND cliente.fkCargo = cargo.idcargo
-                    AND cliente.matricula = ?";
+        $query = " DELETE FROM clientes WHERE clientes.id = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(1, $this->matricula);
         if ($stmt->execute()) {

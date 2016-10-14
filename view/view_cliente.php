@@ -60,3 +60,75 @@
 	</fieldset>
 	</form>
 </div>
+<div id="msgsucessodelete"  style="display: none;" class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        Cliente excluído com sucesso!
+</div>
+<?php
+
+include_once 'config/database.php';
+include_once 'model/cliente.php';
+
+
+$database = new Database();
+$db = $database->getConnection();
+ 
+$cliente = new Cliente($db);
+
+$stmt = $cliente->readAll();
+
+$num = $stmt->rowCount();
+
+//lista os funcionarios cadastrados
+if($num>0){
+ 
+    echo "<table id='lista_clientes' class='table table-bordered table-hover'>";
+     
+    
+        echo "<tr>";
+            echo "<th class='width-30-pct'>Nome</th>";
+            echo "<th class='width-100-pct'>Email</th>";
+            echo "<th>Perfil</th>";
+            echo "<th style='text-align:center;'>Ação</th>";
+        echo "</tr>";
+         
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+               
+          
+            
+            extract($row);
+         
+            echo "<tr>";
+                echo "<td>{$nome}</td>";
+                echo "<td>{$email}</td>";
+                if($perfil == "1"){
+                     echo "<td>Administrador</td>";
+                }else if($perfil == 2){
+                    echo "<td>Vendedor</td>";
+                }else if ($perfil == 3){
+                    echo "<td>Cliente</td>";
+                }
+    
+                echo "<td style='text-align:center;'>";
+                    echo "<div id='idCliente' class='cliente display-none' style='display: none;'>{$id}</div>"; 
+                    
+                    echo "<div class='btn btn-info edit-btn margin-right-1em'>";
+                        echo "<span class='glyphicon glyphicon-edit'></span> Editar";
+                    echo "</div>";
+                     
+                
+                    echo "<div class='btn btn-danger delete-btn'>";
+                        echo "<span class='glyphicon glyphicon-remove'></span> Deletar";
+                    echo "</div>";
+                echo "</td>";
+            echo "</tr>";
+        }
+         
+    echo "</table>";
+     
+}
+else{
+    echo "<div class='alert alert-info'>Nenhum Funcionário Cadastrado!</div>";
+}
+ 
+?>
