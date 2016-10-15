@@ -34,7 +34,6 @@ jQuery(document).ready(function () {
     $(document).on('click', '.delete-btn', function () {
         if (confirm('Tem certeza que deseja deletar?')) {
             var id = $(this).closest('td').find('.idCliente').text();
-            alert(id);
             $.ajax({
                 type: 'POST',
                 url: 'controller/deleteCliente.php',

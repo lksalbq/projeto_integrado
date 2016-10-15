@@ -8,7 +8,7 @@ if($_POST){
     
     
     
-    include_once $_SERVER['DOCUMENT_ROOT'].'../model/cliente.php';
+    include_once $_SERVER['DOCUMENT_ROOT'].'/model/cliente.php';
     $cliente = new Cliente($db);
     
    
