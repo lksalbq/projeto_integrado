@@ -2,7 +2,7 @@
 //faz a insercao do cliente via requisicao ajax caso tudo esteja conforme
 if($_POST){
 
-    include_once __DIR__.'/config/database.php';
+    include_once '/config/database.php';
     $database = new Database();
     $db = $database->getConnection();
     
