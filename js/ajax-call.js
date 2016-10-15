@@ -76,7 +76,6 @@ jQuery(document).ready(function () {
             url: "controller/updateCliente.php",
             data: update,
             success: function (data) {
-                alert(data);
                 $('#updateCliente').hide();
                 $("#msgsucessoupdate").fadeIn(150, function () {
                     window.setTimeout(function () {
