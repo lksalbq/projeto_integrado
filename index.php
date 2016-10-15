@@ -27,7 +27,7 @@ include_once "header.php";
     </div>
 
     <?php
-    include_once "/view/view_cliente.php";
+    include_once $_SERVER['DOCUMENT_ROOT']."/view/view_cliente.php";
     ?>
 
 
