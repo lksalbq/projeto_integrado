@@ -2,13 +2,13 @@
 //faz a insercao do cliente via requisicao ajax caso tudo esteja conforme
 if($_POST){
 
-    include_once $_SERVER['DOCUMENT_ROOT'].'/config/database.php';
+    include_once './config/database.php';
     $database = new Database();
     $db = $database->getConnection();
     
     
     
-    include_once $_SERVER['DOCUMENT_ROOT'].'/model/cliente.php';
+    include_once './model/cliente.php';
     $cliente = new Cliente($db);
     
    

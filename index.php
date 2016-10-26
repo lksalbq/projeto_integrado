@@ -1,39 +1,34 @@
-<?php
+ <?php
+
+session_start();
+
+
+
+if((isset ($_SESSION['nome']) == true) and (isset ($_SESSION['senha']) == true)){ 
+   header('location: home.php'); 
+}   
 include_once "header.php";
 ?>
-
-<div id="fh5co-main">
-
-    <div class="fh5co-cards">
-        <div class="container-fluid">
-            <div class="row animate-box">
-                <div class="col-md-12 heading text-center"><h2>Administrador, Seja Bem-Vindo! </h2></div>
+            <div id="banner"></div>
+            <div id="main" class="container"> 	
+                <form name="loginform" id="loginform" action="" method="post" class="wpl-track-me"> 
+                    <p class="login-username">
+                        <label for="user_login">Usuário</label> 
+                        <input type="text" name="nome" id="nome" class="input" placeholder="Usuário" value="" size="20" /> 
+                    </p> 
+                    <p class="login-password"> 
+                        <label for="user_pass">Senha</label><input type="password" name="senha" id="senha" class="input" placeholder="Senha" value="" size="20" /> 
+                    </p> 	
+                    <p class="login-remember"><label><input name="rememberme" type="checkbox" id="rememberme" value="forever"> Lembrar</label></p>
+                    <p class="login-submit"><input type="submit" name="wp-submit" id="wp-submit" class="button-primary" value="Entrar" />
+                        <input type="hidden" name="redirect_to" value="#"/>
+                    </p> 	
+                </form> 
             </div>
-            <div class="row">
-
-                <div class="col-lg-3 col-md-6 col-sm-6 animate-box">
-                    <a  class="fh5co-card smoothscroll" href="#hoverCliente" >
-                        <img id="imgCliente" src="images/clientes.png" alt="" class="img-responsive">
-                        <div class="fh5co-card-body">
-                            <h3>Cadastro de Clientes</h3>
-
-                        </div>
-                    </a>
-                </div>
+      
 
 
-            </div>
-        </div>
-    </div>
 
-    <?php
-    include_once $_SERVER['DOCUMENT_ROOT']."/view/view_cliente.php";
-    ?>
-
-
-    <footer role="contentinfo" id="fh5co-footer">
-        <a href="#" class="fh5co-arrow fh5co-gotop footer-box"><i class="ti-angle-up"></i></a>
-    </footer>
 
 </body>
 </html>

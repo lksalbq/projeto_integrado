@@ -1,7 +1,7 @@
 <?php
 class Database {
 
-    public $url;
+   
     public $host;
     public $db_name;
     public $username;
@@ -9,11 +9,11 @@ class Database {
     public $conn;
 
     public function __construct(){
-         $this->url =  parse_url(getenv("CLEARDB_DATABASE_URL"));
-        $this->host = $this->url["host"];
-        $this->db_name = substr($this->url["path"], 1);
-        $this->username = $this->url["user"];
-        $this->password = $this->url["pass"];     
+         
+        $this->host = 'localhost';
+        $this->db_name = 'rc_info';
+        $this->username = 'root';
+        $this->password = '';
     }
     
     public function getConnection() {

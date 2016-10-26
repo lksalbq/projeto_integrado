@@ -1,3 +1,29 @@
+$(document).ready(function () {
+//Ajax login
+    
+$('#loginform').submit(function () {
+    var dados = jQuery(this).serialize();
+    $.ajax({
+        type: "POST",
+        url: "controller/logar.php",
+        data: dados,
+        success: function (result) {
+            alert(result);
+            if (result == 1) {
+                location.href = 'home.php';
+            } else {
+                $("#msgerro").fadeIn(1500, function () {
+                    window.setTimeout(function () {
+                        $('#msgerro').fadeOut();
+                    }, 10000);
+                });
+            }
+        }
+    });
+    return false;
+});
+
+
 //ajax cadastra clientes
 jQuery(document).ready(function () {
     jQuery('#cadastroCliente').submit(function () {
@@ -89,4 +115,6 @@ jQuery(document).ready(function () {
         });
         return false;
     });
+    });
 });
+

@@ -1,8 +1,11 @@
-<!DOCTYPE html>
+
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> 
+
+ <!--<![endif]-->
+<html class="no-js">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -59,6 +62,7 @@
 <!-- Theme Style -->
 <link rel="stylesheet" href="css/style.css">
 
+
 <!--Card Style -->
 <link rel="stylesheet" href="css/cardStyle.css">
 
@@ -74,25 +78,3 @@
 
 </head>
 <body>
-
-
-
-
-	<div id="fh5co-hero">
-	<div class="overlay"></div>
-	<a href="#fh5co-main" class="smoothscroll fh5co-arrow to-animate hero-animate-4"><i class="ti-angle-down"></i></a>
-	<!-- End fh5co-arrow -->
-	<div class="container">
-	<div class="col-md-12">
-	<div class="fh5co-hero-wrap">
-	<div class="fh5co-hero-intro">
-		<h1 class="to-animate hero-animate-1">RC - Informática</h1>
-		<h2 class="to-animate hero-animate-2">Soluções em <p class="to-animate hero-animate-3"><a href="#" class="btn btn-outline btn-md">TI</a></p></h2>
-
-
-		<!--Sign up-->
-	</div>
-	</div>
-	</div>
-	</div>		
-	</div>
