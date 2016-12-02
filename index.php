@@ -2,12 +2,10 @@
 
 session_start();
 
-
-
 if((isset ($_SESSION['nome']) == true) and (isset ($_SESSION['senha']) == true)){ 
    header('location: home.php'); 
 }   
-include_once "header.php";
+include_once "/views/header.php";
 ?>
             <div id="banner"></div>
             <div id="main" class="container"> 	

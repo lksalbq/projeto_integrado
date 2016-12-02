@@ -10,7 +10,7 @@ $db = $database->getConnection();
 
 $usuario = new Usuario($db);
 
-$usuario->nome = strip_tags($_POST['nome']);
+$usuario->login = strip_tags($_POST['login']);
 $usuario->senha = strip_tags($_POST['senha']);
 
 $stmt = $usuario->logando();
@@ -21,7 +21,7 @@ $num = $stmt->rowCount();
 if($num > 0)
 {   
     echo 1;
-    $_SESSION['nome'] = $usuario->nome;
+    $_SESSION['login'] = $usuario->login;
     $_SESSION['senha'] = $usuario->senha;
     $_SESSION['perfil'] = $usuario->perfil;
     

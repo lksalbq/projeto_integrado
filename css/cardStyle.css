@@ -1,5 +1,7 @@
-#imgCliente{
+.img-card-home{
     margin: 20px 20px 20px 20px ;
+    width: 280px;
+    height: 280px;
 }
 
 .fh5co-card-body h3{

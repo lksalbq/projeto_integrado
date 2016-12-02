@@ -2,11 +2,11 @@
 //classse login
 class Usuario {
     private $conn;
-    private $table_name = "clientes";
+    private $table_name = "usuario";
  
   
     public $id;
-    public $nome;
+    public $login;
     public $senha;
     public $perfil;
    
@@ -20,13 +20,13 @@ class Usuario {
         $query = "INSERT INTO
                     " . $this->table_name . "
                 SET
-                    nome = ?, senha = ?, perfil = ?";
+                    login = ?, senha = ?, perfil = ?";
         
     
  
         $stmt = $this->conn->prepare($query);
  
-        $stmt->bindParam(1, $this->nome);
+        $stmt->bindParam(1, $this->login);
         $stmt->bindParam(3, $this->senha);
         $stmt->bindParam(4, $this->perfil);
     
@@ -45,7 +45,7 @@ class Usuario {
         $query = "UPDATE 
                 
             SET 
-                nome = :nome,
+                login = :login,
                 senha = :senha,
                 perfil = :perfil
                 
@@ -55,7 +55,7 @@ class Usuario {
         $stmt = $this->conn->prepare($query);
         
         $stmt->bindParam(':id', $this->id);
-        $stmt->bindParam(':nome', $this->nome);
+        $stmt->bindParam(':login', $this->login);
         $stmt->bindParam(':senha', $this->senha);
         $stmt->bindParam(':perfil', $this->perfil);
         
@@ -70,7 +70,7 @@ class Usuario {
      //lê um usuario para ser editado
     function readOne() {
         $query = "SELECT
-                 id,nome,senha,perfil
+                 id,login,senha,perfil
                 FROM " . $this->table_name . "
             WHERE
                 id = ?
@@ -84,7 +84,7 @@ class Usuario {
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         
         $this->id = $row['id'];
-        $this->nome = $row['nome'];
+        $this->login = $row[''];
         $this->senha = $row['senha'];
         $this->perfil = $row['perfil'];
     }
@@ -99,14 +99,14 @@ class Usuario {
    
                 FROM  " . $this->table_name . "
             WHERE
-                nome = ? and
+                login = ? and
                 senha = ?
             LIMIT
                 1";
  
     $stmt = $this->conn->prepare( $query );
     
-    $stmt->bindParam(1, $this->nome);
+    $stmt->bindParam(1, $this->login);
     $stmt->bindParam(2, $this->senha);
     
     $stmt->execute();
@@ -123,14 +123,14 @@ class Usuario {
    
                 FROM  " . $this->table_name . "
             WHERE
-                nome = ? and
+                login = ? and
                 senha = ?
             LIMIT
                 1";
  
     $stmt = $this->conn->prepare( $query );
     
-    $stmt->bindParam(1, $this->nome);
+    $stmt->bindParam(1, $this->login);
     $stmt->bindParam(2, $this->senha);
     
     $stmt->execute();
@@ -140,9 +140,9 @@ class Usuario {
     
      //lê todos os usuarios
     function readAll() {
-        $query = "SELECT id,nome,perfil "
+        $query = "SELECT id,login,perfil "
                 . "FROM " . $this->table_name . "
-                ORDER BY nome";
+                ORDER BY login";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt;

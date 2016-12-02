@@ -29,7 +29,7 @@
                 <!-- Text input-->
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="endereco">Endereço</label>  
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <input id="endereco" name="endereco" placeholder="Endereço" class="form-control input-md" required="" type="text">
 
                     </div>
@@ -41,18 +41,6 @@
                     <div class="col-md-5">
                         <input id="email" name="email" placeholder="E-mail" class="form-control input-md" required="" type="text">
 
-                    </div>
-                </div>
-
-                <!-- Select Basic -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="perfil">Perfil</label>
-                    <div class="col-md-4">
-                        <select id="perfil" name="perfil" class="form-control">
-                            <option value="1">Cliente</option>
-                            <option value="2">Vendedor</option>
-                            <option value="3">Administrador</option>
-                        </select>
                     </div>
                 </div>
 
@@ -68,8 +56,8 @@
     </div>
     
  <?php
-    include_once './config/database.php';
-    include_once '/.model/cliente.php';
+    include_once '../config/database.php';
+    include_once '../models/cliente.php';
 
 
     $database = new Database();
@@ -128,7 +116,7 @@
 
         echo "</table>";
     } else {
-        echo "<div class='lista_clientes alert alert-info'>Nenhum Funcionário Cadastrado!</div>";
+        echo "<div class='lista_clientes alert alert-info'>Nenhum Cliente Cadastrado!</div>";
     }
 
     echo "<div id='page-edita'></div>";

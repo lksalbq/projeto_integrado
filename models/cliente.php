@@ -8,7 +8,7 @@ class Cliente {
     public $nome;
     public $endereco;
     public $email;
-    public $perfil;
+
     
     public function __construct($db) {
         $this->conn = $db;
@@ -19,12 +19,12 @@ class Cliente {
         $query = "INSERT INTO
                     " . $this->table_name . "
                 SET
-                    nome = ?, endereco = ?,email = ?, perfil = ?";
+                    nome = ?, endereco = ?,email = ?, ";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(1, $this->nome);
         $stmt->bindParam(2, $this->endereco);
         $stmt->bindParam(3, $this->email);
-        $stmt->bindParam(4, $this->perfil);
+
        
 
         if ($stmt->execute()) {
@@ -37,7 +37,7 @@ class Cliente {
     
     //lê todos os clientes
     function readAll() {
-        $query = "SELECT id,nome, email,perfil "
+        $query = "SELECT * "
                 . "FROM clientes "
                 . "ORDER BY id";
         $stmt = $this->conn->prepare($query);
