@@ -76,9 +76,9 @@
 
 
         echo "<tr>";
-        echo "<th class='width-30-pct'>Nome</th>";
-        echo "<th class='width-100-pct'>Email</th>";
-        echo "<th>Perfil</th>";
+        echo "<th class='width-50-pct'>Nome</th>";
+        echo "<th class='width-100-pct'>Endereço</th>";
+        echo "<th class='width-200-pct'>E-mail</th>";
         echo "<th style='text-align:center;'>Ação</th>";
         echo "</tr>";
 
@@ -90,17 +90,12 @@
 
             echo "<tr>";
             echo "<td>{$nome}</td>";
+            echo "<td>{$endereco}</td>";
             echo "<td>{$email}</td>";
-            if ($perfil == "1") {
-                echo "<td>Administrador</td>";
-            } else if ($perfil == 2) {
-                echo "<td>Vendedor</td>";
-            } else if ($perfil == 3) {
-                echo "<td>Cliente</td>";
-            }
+            
 
             echo "<td style='text-align:center;'>";
-            echo "<div id='idCliente' class='idCliente display-none' style='display: none;'>{$id}</div>";
+            echo "<div id='idclientes' class='idclientes display-none' style='display: none;'>{$idclientes}</div>";
 
             echo "<div class='btn btn-info edit-btn margin-right-1em'>";
             echo "<span class='glyphicon glyphicon-edit'></span> Editar";

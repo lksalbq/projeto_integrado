@@ -1,74 +1,72 @@
 <?php
-//classe cliente
-class Cliente {
+//classe produto
+class Produto {
     private $conn;
-    private $table_name = "clientes";
+    private $table_name = "produto";
     
-    public $nome;
-    public $endereco;
-    public $email;
+    public $idproduto;
+    public $codigo;
+    public $descricao;
+    public $valor;
+    public $quantidade;
 
     
     public function __construct($db) {
         $this->conn = $db;
     }
-    //cradastrar um cliente
+    //cadastrar produto
     
     function create() {
         $query = "INSERT INTO
                     " . $this->table_name . "
                 SET
-                    nome = ?, endereco = ?, email = ?";
+                    idproduto = ?, codigo = ?, descricao = ?, valor = ?, quantidade = ? ";
         $stmt = $this->conn->prepare($query);
-        
-        $stmt->bindParam(2, $this->nome);
-        $stmt->bindParam(3, $this->endereco);
-        $stmt->bindParam(4, $this->email);
+        $stmt->bindParam(1, $this->idproduto);
+        $stmt->bindParam(2, $this->codigo);
+        $stmt->bindParam(3, $this->descricao);
+        $stmt->bindParam(4, $this->valor);
+        $stmt->bindParam(5, $this->quantidade);
 
+       
 
-       $rc = $stmt;
-
-        if (false === $rc) {
-
-            die('bind_param() failed: ' . htmlspecialchars($stmt->error));
-        }
-
-        $rc = $stmt->execute();
-
-        if (false === $rc) {
-            die('execute() failed: ' . print_r($stmt->errorInfo()));
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
         }
     }
     
     
-    //lê todos os clientes
+    //lê todos os produtos
     function readAll() {
         $query = "SELECT * "
-                . "FROM clientes "
-                . "ORDER BY idclientes";
+                . "FROM produto "
+                . "ORDER BY idproduto";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt;
     }
     
     
-    //lê um cliente para a tabela lista_clientes
+    //lê um produto para a tabela lista_produtos
     function readOne() {
         $query = "SELECT
-                 nome,endereco,email
-                FROM clientes
+                 codigo,descricao,valor,quantidade
+                FROM produto
             WHERE
-                idclientes = ?
+                idproduto = ?
             LIMIT
                 0,1";
         
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(1, $this->id);
+        $stmt->bindParam(1, $this->idproduto);
         $stmt->execute();
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        $this->nome = $row['nome'];
-        $this->endereco = $row['endereco'];
-        $this->email = $row['email'];
+        $this->codigo = $row['codigo'];
+        $this->descricao = $row['descricao'];
+        $this->valor = $row['valor'];
+        $this->quantidade = $row['quantidade'];
     }
     
     //faz um update em cliente caso ele seja editado
@@ -114,4 +112,3 @@ class Cliente {
         }
     }
 }
-?>

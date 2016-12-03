@@ -8,7 +8,7 @@ include_once "menu.php";
     <div class="fh5co-cards">
         <div class="container-fluid">
             <div class="row animate-box">
-                <div class="col-md-12 heading text-center"><h2>Administrador, Seja Bem-Vindo! </h2></div>
+                <div class="col-md-12 heading text-center"><h2>Seja Bem-Vindo! </h2></div>
                 
             </div>
             <div class="row">

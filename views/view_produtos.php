@@ -2,7 +2,8 @@
 
     <div class="row text-center" id="fh5co-features">
         <div class=" heading animate-box"><h2>Cadastro de Produtos/Serviços</h2></div>
-        <form id="cadastroProdutos" class="form-horizontal">
+
+        <form id="cadastroProdutos" method="post" class="form-horizontal">
             <fieldset>
 
                 <!-- Form Name -->

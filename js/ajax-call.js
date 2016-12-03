@@ -22,6 +22,8 @@ $(document).ready(function () {
         });
         return false;
     });
+    
+   
 
 
 //ajax cadastra clientes
@@ -34,12 +36,14 @@ $(document).ready(function () {
                 }, 1400);
             });
             var dados = jQuery(this).serialize();
-
-            jQuery.ajax({
+        
+                $.ajax({
                 type: "POST",
-                url: "controllers/clienteDAO.php",
+                url: "/projeto_integrado/controllers/clienteDAO.php",
                 data: dados,
                 success: function (data) {
+                    
+                    
                     $("#msgsucesso").fadeIn(1500, function () {
                         window.setTimeout(function () {
                             $('#msgsucesso').fadeOut();
