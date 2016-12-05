@@ -74,6 +74,7 @@
 
 
         echo "<tr>";
+        echo "<th class='width-50-pct'>IdCliente</th>";
         echo "<th class='width-50-pct'>Nome</th>";
         echo "<th class='width-100-pct'>Endereço</th>";
         echo "<th class='width-200-pct'>E-mail</th>";
@@ -87,9 +88,11 @@
             extract($row);
 
             echo "<tr>";
+            echo "<td>{$idclientes}</td>";
             echo "<td>{$nome}</td>";
             echo "<td>{$endereco}</td>";
             echo "<td>{$email}</td>";
+
             
 
             echo "<td style='text-align:center;'>";

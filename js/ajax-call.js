@@ -97,21 +97,22 @@ $(document).ready(function () {
     jQuery(document).ready(function () {
         $(document).on('click', '.delete-btn', function () {
             if (confirm('Tem certeza que deseja deletar?')) {
-                var id = $(this).closest('td').find('.idCliente').text();
+                var id = $(this).closest('td').find('#idclientes').text();
+                alert(id);
                 $.ajax({
                     type: 'POST',
-                    url: 'controllers/deleteCliente.php',
-                    data: 'id=' + id,
+                    url: '/projeto_integrado/controllers/deleteCliente.php',
+                    data: 'idclientes=' + id,
                     success: function (data) {
-
                         alert(data);
+
                         $("#msgsucessodelete").fadeIn(150, function () {
                             window.setTimeout(function () {
                                 $('#msgsucessodelete').fadeOut();
                             }, 3999);
                         });
                         setTimeout(function () {
-                            location.reload();
+                           location.reload();
                         }, 4000);
                     }
                 });

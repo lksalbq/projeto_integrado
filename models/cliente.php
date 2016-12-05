@@ -3,7 +3,7 @@
 class Cliente {
     private $conn;
     private $table_name = "clientes";
-    
+    public $idclientes;
     public $nome;
     public $endereco;
     public $email;
