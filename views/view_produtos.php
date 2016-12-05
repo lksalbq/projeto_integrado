@@ -11,9 +11,9 @@
 
                 <!-- Text input-->
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="Código">Código do produto</label>  
+                    <label class="col-md-4 control-label" for="codigo">Código do produto</label>  
                     <div class="col-md-6">
-                        <input id="Código" name="Código" placeholder="Código" class="form-control input-md" required="" type="text">
+                        <input id="codigo" name="codigo" placeholder="Código" class="form-control input-md" required="" type="text">
 
                     </div>
                 </div>
@@ -29,9 +29,9 @@
 
                 <!-- Text input-->
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="preco">Preço</label>  
+                    <label class="col-md-4 control-label" for="preco">Valor</label>  
                     <div class="col-md-4">
-                        <input id="preco" name="preco" placeholder="Preço" class="form-control input-md" required="" type="text">
+                        <input id="valor" name="valor" placeholder="Valor" class="form-control input-md" required="" type="text">
 
                     </div>
                 </div>
@@ -58,6 +58,70 @@
         </form>
 
     </div>
-    <!-- END row -->
+
+    <?php
+    include_once '../config/database.php';
+    include_once '../models/produto.php';
+
+
+    $database = new Database();
+    $db = $database->getConnection();
+
+    $produto = new Produto($db);
+
+    $stmt = $produto->readAll();
+
+    $num = $stmt->rowCount();
+
+//lista os produtos cadastrados
+    if ($num > 0) {
+        echo "<div class=' heading animate-box'><h2>Lista de Produtos</h2></div>";
+        echo "<table id='lista_produtos' class='table table-bordered table-hover lista_produtos'>";
+
+
+        echo "<tr>";
+        echo "<th class='width-5-pct'>Código</th>";
+        echo "<th class='width-10-pct'>Descrição</th>";
+        echo "<th class='width-20-pct'>Valor</th>";
+        echo "<th class='width-20-pct'>Quantidade</th>";
+        echo "<th style='text-align:center;'>Ação</th>";
+        echo "</tr>";
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
+
+
+            extract($row);
+
+            echo "<tr>";
+            echo "<td>{$codigo}</td>";
+            echo "<td>{$descricao}</td>";
+            echo "<td>{$valor}</td>";
+            echo "<td>{$quantidade}</td>";
+            
+
+            echo "<td style='text-align:center;'>";
+            echo "<div id='idclientes' class='idclientes display-none' style='display: none;'>{$idclientes}</div>";
+
+            echo "<div class='btn btn-info edit-btn margin-right-1em'>";
+            echo "<span class='glyphicon glyphicon-edit'></span> Editar";
+            echo "</div>";
+
+
+            echo "<div class='btn btn-danger delete-btn'>";
+            echo "<span class='glyphicon glyphicon-remove'></span> Deletar";
+            echo "</div>";
+            echo "</td>";
+            echo "</tr>";
+        }
+
+        echo "</table>";
+    } else {
+        echo "<div class='lista_clientes alert alert-info'>Nenhum Cliente Cadastrado!</div>";
+    }
+
+    echo "<div id='page-edita'></div>";
+?>
+
 
 </div>

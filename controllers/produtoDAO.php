@@ -1,6 +1,6 @@
 <?php
 //faz a insercao do produto via requisicao ajax caso tudo esteja conforme
-if($_POST){
+
 
     include_once '../config/database.php';
     $database = new Database();
@@ -22,4 +22,3 @@ if($_POST){
     
     $produto->create();  
     
-}

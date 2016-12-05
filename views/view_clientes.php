@@ -14,8 +14,6 @@
         <form  id="cadastroCliente" class="form-horizontal"  action="" method="POST" autocomplete="off" enctype="multipart/form-data">
             <fieldset>
 
-                <!-- Form Name -->
-                <legend></legend>
 
                 <!-- Text input-->
                 <div class="form-group">

@@ -36,12 +36,46 @@ $(document).ready(function () {
                 }, 1400);
             });
             var dados = jQuery(this).serialize();
-        
+                alert(dados);
                 $.ajax({
                 type: "POST",
                 url: "/projeto_integrado/controllers/clienteDAO.php",
                 data: dados,
                 success: function (data) {
+                    alert(data);
+                    
+                    
+                    $("#msgsucesso").fadeIn(1500, function () {
+                        window.setTimeout(function () {
+                            $('#msgsucesso').fadeOut();
+                        }, 3999);
+                    });
+                    setTimeout(function () {
+                        location.reload();
+                    }, 4000);
+                }
+            });
+            return false;
+        });
+    });
+
+    //ajax cadastra produto
+    jQuery(document).ready(function () {
+        jQuery('#cadastroProdutos').submit(function () {
+            $("#load").html("<img src='images/load.gif'>");
+            $("#load").fadeIn(100, function () {
+                window.setTimeout(function () {
+                    $('#load').fadeOut();
+                }, 1400);
+            });
+            var dados = jQuery(this).serialize();
+                alert(dados);
+                $.ajax({
+                type: "POST",
+                url: "/projeto_integrado/controllers/produtoDAO.php",
+                data: dados,
+                success: function (data) {
+                    alert(data);
                     
                     
                     $("#msgsucesso").fadeIn(1500, function () {

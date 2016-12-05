@@ -12,7 +12,7 @@ include_once '../models/cliente.php';
 $cliente = new Cliente($db);
 
 
-$cliente->idclientes = strip_tags($_POST["idclientes"]);
+
 $cliente->nome = strip_tags($_POST["nome"]);
 $cliente->endereco = strip_tags($_POST["endereco"]);
 $cliente->email = strip_tags($_POST["email"]);

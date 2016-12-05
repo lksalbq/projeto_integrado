@@ -21,9 +21,9 @@ class Cliente {
                     nome = ?, endereco = ?, email = ?";
         $stmt = $this->conn->prepare($query);
         
-        $stmt->bindParam(2, $this->nome);
-        $stmt->bindParam(3, $this->endereco);
-        $stmt->bindParam(4, $this->email);
+        $stmt->bindParam(1, $this->nome);
+        $stmt->bindParam(2, $this->endereco);
+        $stmt->bindParam(3, $this->email);
 
 
        $rc = $stmt;
@@ -101,11 +101,11 @@ class Cliente {
     
     //deleta o cliente de acordo com a matrícula
     function deletar() {
-        $query = " DELETE FROM clientes WHERE id = ?";
+        $query = " DELETE FROM clientes WHERE idclientes = ?";
         
         $stmt = $this->conn->prepare($query);
         
-        $stmt->bindParam(1, $this->id);
+        $stmt->bindParam(1, $this->idclientes);
         
         if ($stmt->execute()) {
             return true;

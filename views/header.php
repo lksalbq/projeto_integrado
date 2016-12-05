@@ -78,8 +78,8 @@
         <link rel="stylesheet" href="/projeto_integrado/css/login_style.css">
 
         <!-- Datepicker -->       
-        <script type="text/javascript" src="/prj_summer/js/bootstrap-datepicker.min.js" ></script>      
-        <script type="text/javascript" src="/prj_summer/js/bootstrap-datepicker.pt-BR.min.js" ></script>      
-        <link rel="stylesheet" href="/prj_summer/css/bootstrap-datepicker.min.css">
+        <script type="text/javascript" src="/projeto_integrado/js/bootstrap-datepicker.min.js" ></script>      
+        <script type="text/javascript" src="/projeto_integrado/js/bootstrap-datepicker.pt-BR.min.js" ></script>      
+        <link rel="stylesheet" href="/projeto_integrado/css/bootstrap-datepicker.min.css">
     </head>
     <body>
